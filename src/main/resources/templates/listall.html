@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Contact List</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/landing-page.css" rel="stylesheet">
+    <link href="../css/tablecss.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+    <div class="container topnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="/addcontact">Add Contact</a>
+        </div>
+
+
+    </div>
+
+</nav>
+
+<a name="about"></a>
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                        <header>
+                            <h1 class="section-heading">Contact List</h1>
+                        </header>
+                        <form class="well form-horizontal" th:action="@{/addcontact}" method="post" th:object="${newperson}">
+                            <fieldset>
+                                <section class="invoice">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <th:block th:each="item : ${personp}">
+                                        <tbody>
+                                        <tr>
+                                            <td th:text="${item.firstname}"></td>
+                                            <td th:text="${item.lastname}"></td>
+                                            <td th:text="${item.email}"></td>
+                                            <td th:text="${item.phonenumber}"></td>
+                                            <td>
+                                                <a th:href="@{/update/{id}(id=${item.id})}">Update Contact</a> -
+                                                <a th:href="@{/detail/{id}(id=${item.id})}">Details</a> -
+                                                <a th:href="@{/delete/{id}(id=${item.id})}">Delete Contact</a>
+                                            </td>
+                                        </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </fieldset>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+
+
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8" />-->
+    <!--<title>Contact List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<a href="/addcontact">Add a Contact</a><br />-->
+<!--<table>-->
+    <!--<tr>-->
+        <!--<th>First Name</th>-->
+        <!--<th>Last Name</th>-->
+        <!--<th>Email</th>-->
+        <!--<th>Phone Number</th>-->
+        <!--<td>Actions</td>-->
+    <!--</tr>-->
+    <!--<tr th:each="item : ${personp}">-->
+        <!--<td th:text="${item.firstname}"></td>-->
+        <!--<td th:text="${item.lastname}"></td>-->
+        <!--<td th:text="${item.email}"></td>-->
+        <!--<td th:text="${item.phonenumber}"></td>-->
+        <!--<td>-->
+            <!--<a th:href="@{/update/{id}(id=${item.id})}">Update Contact</a> - -->
+            <!--<a th:href="@{/detail/{id}(id=${item.id})}">Details</a> - -->
+            <!--<a th:href="@{/delete/{id}(id=${item.id})}">Delete Contact</a>-->
+        <!--</td>-->
+    <!--</tr>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
